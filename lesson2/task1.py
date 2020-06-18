@@ -8,6 +8,7 @@ info_1.txt, info_2.txt, info_3.txt
 import glob
 import csv
 import re
+import chardet
 
 REQUIRED_FIELDS = [
     'Изготовитель системы',
@@ -27,11 +28,16 @@ def print_lists(data_lists):
 
 def read_file(name):
     try:
-        with open(name, 'r') as datafile:
-            content = datafile.read()
+        with open(name, 'rb') as datafile:
+            b_content = datafile.read()
     except IOError as err:
         print(f'Error opening file "{name}": {err}')
         return None
+    res = chardet.detect(b_content)
+    if res['confidence'] < 0.8:
+        print('Encoding may not be detected correctly!')
+    content = b_content.decode(res['encoding'])
+
     return content
 
 
