@@ -1,6 +1,5 @@
 import argparse
 import json
-from datetime import datetime
 from messenger.common.constants import SERVER_PORT, ENCODING, MAX_DATA_LENGTH
 
 
@@ -12,20 +11,21 @@ def parse_cli_flags(args_list):
     return parser.parse_args(args_list)
 
 
-def send_message(message_obj, connection):
+def send_message(message_obj, connection, logger):
     message_str = json.dumps(message_obj, ensure_ascii=False)
     connection.send(message_str.encode(ENCODING))
-    print(f'-> {datetime.now().strftime("%H:%M:%S")} Sent message to {connection}: '
-          f'{message_obj}')
+    logger.info(f'-> Sent message to {connection.getpeername()}: '
+                f'{message_obj}')
 
 
-def receive_message(connection):
+def receive_message(connection, logger):
     data = connection.recv(MAX_DATA_LENGTH)
     message_str = data.decode(ENCODING)
     try:
         message_obj = json.loads(message_str)
     except json.JSONDecodeError:
-        print(f'Error while decoding message at {datetime.now()}')
+        logger.error(f'Could not decode message: "{message_str}"')
         return None
 
+    logger.info(f'<- Received message from {connection.getpeername()}: {message_obj}')
     return message_obj

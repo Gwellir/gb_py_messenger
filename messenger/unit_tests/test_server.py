@@ -6,7 +6,7 @@ from messenger.server import (check_settings, form_response, process_action, sen
                               terminate_connection)
 from messenger.common.constants import ENCODING
 from messenger.common.exceptions import PortOutOfRangeError
-from messenger.tests.loopback import ConnLoopback
+from messenger.unit_tests.loopback import ConnLoopback
 
 
 class TestServer(TestCase):

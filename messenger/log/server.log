@@ -1,0 +1,31 @@
+INFO     2020-07-02 14:19:30,993 Listening on "":7777
+INFO     2020-07-02 14:19:35,350 <- Received message from ('127.0.0.1', 5170): {'action': 'presence', 'time': 1593688775, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+DEBUG    2020-07-02 14:19:35,350 Formed response: {'response': 200, 'time': 1593688775, 'alert': 'OK'}
+INFO     2020-07-02 14:19:35,350 -> Sent message to ('127.0.0.1', 5170): {'response': 200, 'time': 1593688775, 'alert': 'OK'}
+INFO     2020-07-02 14:19:35,350 New CLIENT: "test" from ('127.0.0.1', 5170)
+INFO     2020-07-02 14:19:35,351 <- Received message from ('127.0.0.1', 5170): {'action': 'authenticate', 'time': 1593688775, 'user': {'account_name': 'test', 'password': '12345678'}}
+DEBUG    2020-07-02 14:19:35,351 Formed response: {'response': 402, 'time': 1593688775, 'error': 'Wrong password'}
+INFO     2020-07-02 14:19:35,351 -> Sent message to ('127.0.0.1', 5170): {'response': 402, 'time': 1593688775, 'error': 'Wrong password'}
+INFO     2020-07-02 14:19:35,352 <- Received message from ('127.0.0.1', 5170): {'action': 'join', 'time': 1593688775, 'room': '#test'}
+DEBUG    2020-07-02 14:19:35,352 Formed response: {'response': 404, 'time': 1593688775, 'error': 'User or chat doesn`t exist'}
+INFO     2020-07-02 14:19:35,352 -> Sent message to ('127.0.0.1', 5170): {'response': 404, 'time': 1593688775, 'error': 'User or chat doesn`t exist'}
+INFO     2020-07-02 14:19:35,352 <- Received message from ('127.0.0.1', 5170): {'action': 'msg', 'time': 1593688775, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+DEBUG    2020-07-02 14:19:35,352 Formed response: {'response': 410, 'time': 1593688775, 'error': 'Target user is offline'}
+INFO     2020-07-02 14:19:35,352 -> Sent message to ('127.0.0.1', 5170): {'response': 410, 'time': 1593688775, 'error': 'Target user is offline'}
+ERROR    2020-07-02 14:19:35,353 Could not decode message: ""
+INFO     2020-07-02 14:19:35,353 Client "test" has disconnected
+INFO     2020-07-02 14:20:47,660 <- Received message from ('127.0.0.1', 5202): {'action': 'presence', 'time': 1593688847, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+DEBUG    2020-07-02 14:20:47,660 Formed response: {'response': 200, 'time': 1593688847, 'alert': 'OK'}
+INFO     2020-07-02 14:20:47,660 -> Sent message to ('127.0.0.1', 5202): {'response': 200, 'time': 1593688847, 'alert': 'OK'}
+INFO     2020-07-02 14:20:47,660 New CLIENT: "test" from ('127.0.0.1', 5202)
+INFO     2020-07-02 14:20:47,661 <- Received message from ('127.0.0.1', 5202): {'action': 'authenticate', 'time': 1593688847, 'user': {'account_name': 'test', 'password': '12345678'}}
+DEBUG    2020-07-02 14:20:47,661 Formed response: {'response': 402, 'time': 1593688847, 'error': 'Wrong password'}
+INFO     2020-07-02 14:20:47,661 -> Sent message to ('127.0.0.1', 5202): {'response': 402, 'time': 1593688847, 'error': 'Wrong password'}
+INFO     2020-07-02 14:20:47,662 <- Received message from ('127.0.0.1', 5202): {'action': 'join', 'time': 1593688847, 'room': '#test'}
+DEBUG    2020-07-02 14:20:47,662 Formed response: {'response': 404, 'time': 1593688847, 'error': 'User or chat doesn`t exist'}
+INFO     2020-07-02 14:20:47,662 -> Sent message to ('127.0.0.1', 5202): {'response': 404, 'time': 1593688847, 'error': 'User or chat doesn`t exist'}
+INFO     2020-07-02 14:20:47,662 <- Received message from ('127.0.0.1', 5202): {'action': 'msg', 'time': 1593688847, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+DEBUG    2020-07-02 14:20:47,662 Formed response: {'response': 410, 'time': 1593688847, 'error': 'Target user is offline'}
+INFO     2020-07-02 14:20:47,662 -> Sent message to ('127.0.0.1', 5202): {'response': 410, 'time': 1593688847, 'error': 'Target user is offline'}
+ERROR    2020-07-02 14:20:47,663 Could not decode message: ""
+INFO     2020-07-02 14:20:47,663 Client "test" has disconnected
