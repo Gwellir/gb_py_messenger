@@ -1,91 +1,79 @@
-2020-07-02 15:40:18,620 INFO     [server] Listening on "":7777
-2020-07-02 15:40:20,283 INFO     [server] <- Received message from ('127.0.0.1', 9504): {'action': 'presence', 'time': 1593693620, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
-2020-07-02 15:40:20,283 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693620, 'alert': 'OK'}
-2020-07-02 15:40:20,283 INFO     [server] -> Sent message to ('127.0.0.1', 9504): {'response': 200, 'time': 1593693620, 'alert': 'OK'}
-2020-07-02 15:40:20,283 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9504)
-2020-07-02 15:40:20,284 INFO     [server] <- Received message from ('127.0.0.1', 9504): {'action': 'authenticate', 'time': 1593693620, 'user': {'account_name': 'test', 'password': '12345678'}}
-2020-07-02 15:40:20,284 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
-2020-07-02 15:40:20,284 INFO     [server] -> Sent message to ('127.0.0.1', 9504): {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
-2020-07-02 15:40:20,289 INFO     [server] <- Received message from ('127.0.0.1', 9504): {'action': 'join', 'time': 1593693620, 'room': '#test'}
-2020-07-02 15:40:20,289 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:20,289 INFO     [server] -> Sent message to ('127.0.0.1', 9504): {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:20,289 INFO     [server] <- Received message from ('127.0.0.1', 9504): {'action': 'msg', 'time': 1593693620, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
-2020-07-02 15:40:20,290 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
-2020-07-02 15:40:20,290 INFO     [server] -> Sent message to ('127.0.0.1', 9504): {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
-2020-07-02 15:40:20,290 ERROR    [server] Could not decode message: ""
-2020-07-02 15:40:20,290 INFO     [server] Client "test" has disconnected
-2020-07-02 15:40:20,939 INFO     [server] <- Received message from ('127.0.0.1', 9505): {'action': 'presence', 'time': 1593693620, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
-2020-07-02 15:40:20,939 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693620, 'alert': 'OK'}
-2020-07-02 15:40:20,939 INFO     [server] -> Sent message to ('127.0.0.1', 9505): {'response': 200, 'time': 1593693620, 'alert': 'OK'}
-2020-07-02 15:40:20,939 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9505)
-2020-07-02 15:40:20,940 INFO     [server] <- Received message from ('127.0.0.1', 9505): {'action': 'authenticate', 'time': 1593693620, 'user': {'account_name': 'test', 'password': '12345678'}}
-2020-07-02 15:40:20,940 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
-2020-07-02 15:40:20,940 INFO     [server] -> Sent message to ('127.0.0.1', 9505): {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
-2020-07-02 15:40:20,940 INFO     [server] <- Received message from ('127.0.0.1', 9505): {'action': 'join', 'time': 1593693620, 'room': '#test'}
-2020-07-02 15:40:20,940 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:20,941 INFO     [server] -> Sent message to ('127.0.0.1', 9505): {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:20,941 INFO     [server] <- Received message from ('127.0.0.1', 9505): {'action': 'msg', 'time': 1593693620, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
-2020-07-02 15:40:20,941 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
-2020-07-02 15:40:20,941 INFO     [server] -> Sent message to ('127.0.0.1', 9505): {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
-2020-07-02 15:40:20,942 ERROR    [server] Could not decode message: ""
-2020-07-02 15:40:20,942 INFO     [server] Client "test" has disconnected
-2020-07-02 15:40:21,566 INFO     [server] <- Received message from ('127.0.0.1', 9506): {'action': 'presence', 'time': 1593693621, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
-2020-07-02 15:40:21,566 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693621, 'alert': 'OK'}
-2020-07-02 15:40:21,566 INFO     [server] -> Sent message to ('127.0.0.1', 9506): {'response': 200, 'time': 1593693621, 'alert': 'OK'}
-2020-07-02 15:40:21,567 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9506)
-2020-07-02 15:40:21,567 INFO     [server] <- Received message from ('127.0.0.1', 9506): {'action': 'authenticate', 'time': 1593693621, 'user': {'account_name': 'test', 'password': '12345678'}}
-2020-07-02 15:40:21,567 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693621, 'error': 'Wrong password'}
-2020-07-02 15:40:21,567 INFO     [server] -> Sent message to ('127.0.0.1', 9506): {'response': 402, 'time': 1593693621, 'error': 'Wrong password'}
-2020-07-02 15:40:21,567 INFO     [server] <- Received message from ('127.0.0.1', 9506): {'action': 'join', 'time': 1593693621, 'room': '#test'}
-2020-07-02 15:40:21,568 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693621, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:21,568 INFO     [server] -> Sent message to ('127.0.0.1', 9506): {'response': 404, 'time': 1593693621, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:21,568 INFO     [server] <- Received message from ('127.0.0.1', 9506): {'action': 'msg', 'time': 1593693621, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
-2020-07-02 15:40:21,568 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693621, 'error': 'Target user is offline'}
-2020-07-02 15:40:21,568 INFO     [server] -> Sent message to ('127.0.0.1', 9506): {'response': 410, 'time': 1593693621, 'error': 'Target user is offline'}
-2020-07-02 15:40:21,568 ERROR    [server] Could not decode message: ""
-2020-07-02 15:40:21,569 INFO     [server] Client "test" has disconnected
-2020-07-02 15:40:22,252 INFO     [server] <- Received message from ('127.0.0.1', 9509): {'action': 'presence', 'time': 1593693622, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
-2020-07-02 15:40:22,253 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693622, 'alert': 'OK'}
-2020-07-02 15:40:22,253 INFO     [server] -> Sent message to ('127.0.0.1', 9509): {'response': 200, 'time': 1593693622, 'alert': 'OK'}
-2020-07-02 15:40:22,253 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9509)
-2020-07-02 15:40:22,253 INFO     [server] <- Received message from ('127.0.0.1', 9509): {'action': 'authenticate', 'time': 1593693622, 'user': {'account_name': 'test', 'password': '12345678'}}
-2020-07-02 15:40:22,253 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
-2020-07-02 15:40:22,253 INFO     [server] -> Sent message to ('127.0.0.1', 9509): {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
-2020-07-02 15:40:22,254 INFO     [server] <- Received message from ('127.0.0.1', 9509): {'action': 'join', 'time': 1593693622, 'room': '#test'}
-2020-07-02 15:40:22,254 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:22,254 INFO     [server] -> Sent message to ('127.0.0.1', 9509): {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:22,254 INFO     [server] <- Received message from ('127.0.0.1', 9509): {'action': 'msg', 'time': 1593693622, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
-2020-07-02 15:40:22,254 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
-2020-07-02 15:40:22,255 INFO     [server] -> Sent message to ('127.0.0.1', 9509): {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
-2020-07-02 15:40:22,255 ERROR    [server] Could not decode message: ""
-2020-07-02 15:40:22,255 INFO     [server] Client "test" has disconnected
-2020-07-02 15:40:22,945 INFO     [server] <- Received message from ('127.0.0.1', 9513): {'action': 'presence', 'time': 1593693622, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
-2020-07-02 15:40:22,945 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693622, 'alert': 'OK'}
-2020-07-02 15:40:22,945 INFO     [server] -> Sent message to ('127.0.0.1', 9513): {'response': 200, 'time': 1593693622, 'alert': 'OK'}
-2020-07-02 15:40:22,945 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9513)
-2020-07-02 15:40:22,946 INFO     [server] <- Received message from ('127.0.0.1', 9513): {'action': 'authenticate', 'time': 1593693622, 'user': {'account_name': 'test', 'password': '12345678'}}
-2020-07-02 15:40:22,946 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
-2020-07-02 15:40:22,946 INFO     [server] -> Sent message to ('127.0.0.1', 9513): {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
-2020-07-02 15:40:22,946 INFO     [server] <- Received message from ('127.0.0.1', 9513): {'action': 'join', 'time': 1593693622, 'room': '#test'}
-2020-07-02 15:40:22,946 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:22,946 INFO     [server] -> Sent message to ('127.0.0.1', 9513): {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:22,947 INFO     [server] <- Received message from ('127.0.0.1', 9513): {'action': 'msg', 'time': 1593693622, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
-2020-07-02 15:40:22,947 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
-2020-07-02 15:40:22,947 INFO     [server] -> Sent message to ('127.0.0.1', 9513): {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
-2020-07-02 15:40:22,947 ERROR    [server] Could not decode message: ""
-2020-07-02 15:40:22,947 INFO     [server] Client "test" has disconnected
-2020-07-02 15:40:23,597 INFO     [server] <- Received message from ('127.0.0.1', 9514): {'action': 'presence', 'time': 1593693623, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
-2020-07-02 15:40:23,597 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693623, 'alert': 'OK'}
-2020-07-02 15:40:23,598 INFO     [server] -> Sent message to ('127.0.0.1', 9514): {'response': 200, 'time': 1593693623, 'alert': 'OK'}
-2020-07-02 15:40:23,598 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9514)
-2020-07-02 15:40:23,598 INFO     [server] <- Received message from ('127.0.0.1', 9514): {'action': 'authenticate', 'time': 1593693623, 'user': {'account_name': 'test', 'password': '12345678'}}
-2020-07-02 15:40:23,598 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693623, 'error': 'Wrong password'}
-2020-07-02 15:40:23,598 INFO     [server] -> Sent message to ('127.0.0.1', 9514): {'response': 402, 'time': 1593693623, 'error': 'Wrong password'}
-2020-07-02 15:40:23,599 INFO     [server] <- Received message from ('127.0.0.1', 9514): {'action': 'join', 'time': 1593693623, 'room': '#test'}
-2020-07-02 15:40:23,599 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693623, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:23,599 INFO     [server] -> Sent message to ('127.0.0.1', 9514): {'response': 404, 'time': 1593693623, 'error': 'User or chat doesn`t exist'}
-2020-07-02 15:40:23,599 INFO     [server] <- Received message from ('127.0.0.1', 9514): {'action': 'msg', 'time': 1593693623, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
-2020-07-02 15:40:23,599 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693623, 'error': 'Target user is offline'}
-2020-07-02 15:40:23,600 INFO     [server] -> Sent message to ('127.0.0.1', 9514): {'response': 410, 'time': 1593693623, 'error': 'Target user is offline'}
-2020-07-02 15:40:23,600 ERROR    [server] Could not decode message: ""
-2020-07-02 15:40:23,600 INFO     [server] Client "test" has disconnected
+2020-07-08 21:38:02,189 DEBUG    [server] function "check_settings" called from "<module>", params = ([],), {}
+2020-07-08 21:38:02,190 DEBUG    [server] function "parse_cli_flags" called from "check_settings", params = ([],), {}
+2020-07-08 21:38:02,192 INFO     [server] Listening on "":7777
+2020-07-08 21:38:03,712 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:03,713 INFO     [server] <- Received message from ('127.0.0.1', 4323): {'action': 'presence', 'time': 1594233483, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-08 21:38:03,714 DEBUG    [server] function "check_presence" called from "<module>", params = ({'action': 'presence', 'time': 1594233483, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}},), {}
+2020-07-08 21:38:03,714 DEBUG    [server] function "send_response" called from "<module>", params = ({'action': 'presence', 'time': 1594233483, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}, <socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>), {}
+2020-07-08 21:38:03,715 DEBUG    [server] function "process_action" called from "send_response", params = ({'action': 'presence', 'time': 1594233483, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}},), {}
+2020-07-08 21:38:03,715 DEBUG    [server] function "form_response" called from "send_response", params = (200,), {}
+2020-07-08 21:38:03,715 DEBUG    [server] Formed response: {'response': 200, 'time': 1594233483, 'alert': 'OK'}
+2020-07-08 21:38:03,716 DEBUG    [server] function "send_message" called from "send_response", params = ({'response': 200, 'time': 1594233483, 'alert': 'OK'}, <socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:03,716 INFO     [server] -> Sent message to ('127.0.0.1', 4323): {'response': 200, 'time': 1594233483, 'alert': 'OK'}
+2020-07-08 21:38:03,716 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 4323)
+2020-07-08 21:38:03,717 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:03,718 INFO     [server] <- Received message from ('127.0.0.1', 4323): {'action': 'authenticate', 'time': 1594233483, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-08 21:38:03,719 DEBUG    [server] function "send_response" called from "<module>", params = ({'action': 'authenticate', 'time': 1594233483, 'user': {'account_name': 'test', 'password': '12345678'}}, <socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>), {}
+2020-07-08 21:38:03,719 DEBUG    [server] function "process_action" called from "send_response", params = ({'action': 'authenticate', 'time': 1594233483, 'user': {'account_name': 'test', 'password': '12345678'}},), {}
+2020-07-08 21:38:03,720 DEBUG    [server] function "form_response" called from "send_response", params = (402,), {}
+2020-07-08 21:38:03,720 DEBUG    [server] Formed response: {'response': 402, 'time': 1594233483, 'error': 'Wrong password'}
+2020-07-08 21:38:03,720 DEBUG    [server] function "send_message" called from "send_response", params = ({'response': 402, 'time': 1594233483, 'error': 'Wrong password'}, <socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:03,720 INFO     [server] -> Sent message to ('127.0.0.1', 4323): {'response': 402, 'time': 1594233483, 'error': 'Wrong password'}
+2020-07-08 21:38:03,721 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:03,722 INFO     [server] <- Received message from ('127.0.0.1', 4323): {'action': 'join', 'time': 1594233483, 'room': '#test'}
+2020-07-08 21:38:03,723 DEBUG    [server] function "send_response" called from "<module>", params = ({'action': 'join', 'time': 1594233483, 'room': '#test'}, <socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>), {}
+2020-07-08 21:38:03,723 DEBUG    [server] function "process_action" called from "send_response", params = ({'action': 'join', 'time': 1594233483, 'room': '#test'},), {}
+2020-07-08 21:38:03,724 DEBUG    [server] function "form_response" called from "send_response", params = (404,), {}
+2020-07-08 21:38:03,724 DEBUG    [server] Formed response: {'response': 404, 'time': 1594233483, 'error': 'User or chat doesn`t exist'}
+2020-07-08 21:38:03,724 DEBUG    [server] function "send_message" called from "send_response", params = ({'response': 404, 'time': 1594233483, 'error': 'User or chat doesn`t exist'}, <socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:03,724 INFO     [server] -> Sent message to ('127.0.0.1', 4323): {'response': 404, 'time': 1594233483, 'error': 'User or chat doesn`t exist'}
+2020-07-08 21:38:03,725 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:03,726 INFO     [server] <- Received message from ('127.0.0.1', 4323): {'action': 'msg', 'time': 1594233483, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-08 21:38:03,727 DEBUG    [server] function "send_response" called from "<module>", params = ({'action': 'msg', 'time': 1594233483, 'to': '#test', 'from': 'test', 'message': 'Привет!'}, <socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>), {}
+2020-07-08 21:38:03,727 DEBUG    [server] function "process_action" called from "send_response", params = ({'action': 'msg', 'time': 1594233483, 'to': '#test', 'from': 'test', 'message': 'Привет!'},), {}
+2020-07-08 21:38:03,728 DEBUG    [server] function "form_response" called from "send_response", params = (410,), {}
+2020-07-08 21:38:03,728 DEBUG    [server] Formed response: {'response': 410, 'time': 1594233483, 'error': 'Target user is offline'}
+2020-07-08 21:38:03,728 DEBUG    [server] function "send_message" called from "send_response", params = ({'response': 410, 'time': 1594233483, 'error': 'Target user is offline'}, <socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:03,729 INFO     [server] -> Sent message to ('127.0.0.1', 4323): {'response': 410, 'time': 1594233483, 'error': 'Target user is offline'}
+2020-07-08 21:38:03,729 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=792, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4323)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:03,729 ERROR    [server] Could not decode message: ""
+2020-07-08 21:38:03,730 ERROR    [server] function "receive_message" raised an exception "JSONDecodeError" ('Expecting value: line 1 column 1 (char 0)',)
+2020-07-08 21:38:03,730 INFO     [server] Client "test" has disconnected
+2020-07-08 21:38:05,142 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:05,143 INFO     [server] <- Received message from ('127.0.0.1', 4325): {'action': 'presence', 'time': 1594233485, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-08 21:38:05,144 DEBUG    [server] function "check_presence" called from "<module>", params = ({'action': 'presence', 'time': 1594233485, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}},), {}
+2020-07-08 21:38:05,144 DEBUG    [server] function "send_response" called from "<module>", params = ({'action': 'presence', 'time': 1594233485, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}, <socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>), {}
+2020-07-08 21:38:05,145 DEBUG    [server] function "process_action" called from "send_response", params = ({'action': 'presence', 'time': 1594233485, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}},), {}
+2020-07-08 21:38:05,145 DEBUG    [server] function "form_response" called from "send_response", params = (200,), {}
+2020-07-08 21:38:05,145 DEBUG    [server] Formed response: {'response': 200, 'time': 1594233485, 'alert': 'OK'}
+2020-07-08 21:38:05,146 DEBUG    [server] function "send_message" called from "send_response", params = ({'response': 200, 'time': 1594233485, 'alert': 'OK'}, <socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:05,146 INFO     [server] -> Sent message to ('127.0.0.1', 4325): {'response': 200, 'time': 1594233485, 'alert': 'OK'}
+2020-07-08 21:38:05,146 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 4325)
+2020-07-08 21:38:05,146 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:05,148 INFO     [server] <- Received message from ('127.0.0.1', 4325): {'action': 'authenticate', 'time': 1594233485, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-08 21:38:05,148 DEBUG    [server] function "send_response" called from "<module>", params = ({'action': 'authenticate', 'time': 1594233485, 'user': {'account_name': 'test', 'password': '12345678'}}, <socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>), {}
+2020-07-08 21:38:05,149 DEBUG    [server] function "process_action" called from "send_response", params = ({'action': 'authenticate', 'time': 1594233485, 'user': {'account_name': 'test', 'password': '12345678'}},), {}
+2020-07-08 21:38:05,150 DEBUG    [server] function "form_response" called from "send_response", params = (402,), {}
+2020-07-08 21:38:05,150 DEBUG    [server] Formed response: {'response': 402, 'time': 1594233485, 'error': 'Wrong password'}
+2020-07-08 21:38:05,150 DEBUG    [server] function "send_message" called from "send_response", params = ({'response': 402, 'time': 1594233485, 'error': 'Wrong password'}, <socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:05,150 INFO     [server] -> Sent message to ('127.0.0.1', 4325): {'response': 402, 'time': 1594233485, 'error': 'Wrong password'}
+2020-07-08 21:38:05,151 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:05,152 INFO     [server] <- Received message from ('127.0.0.1', 4325): {'action': 'join', 'time': 1594233485, 'room': '#test'}
+2020-07-08 21:38:05,153 DEBUG    [server] function "send_response" called from "<module>", params = ({'action': 'join', 'time': 1594233485, 'room': '#test'}, <socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>), {}
+2020-07-08 21:38:05,153 DEBUG    [server] function "process_action" called from "send_response", params = ({'action': 'join', 'time': 1594233485, 'room': '#test'},), {}
+2020-07-08 21:38:05,154 DEBUG    [server] function "form_response" called from "send_response", params = (404,), {}
+2020-07-08 21:38:05,154 DEBUG    [server] Formed response: {'response': 404, 'time': 1594233485, 'error': 'User or chat doesn`t exist'}
+2020-07-08 21:38:05,155 DEBUG    [server] function "send_message" called from "send_response", params = ({'response': 404, 'time': 1594233485, 'error': 'User or chat doesn`t exist'}, <socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:05,155 INFO     [server] -> Sent message to ('127.0.0.1', 4325): {'response': 404, 'time': 1594233485, 'error': 'User or chat doesn`t exist'}
+2020-07-08 21:38:05,155 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:05,157 INFO     [server] <- Received message from ('127.0.0.1', 4325): {'action': 'msg', 'time': 1594233485, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-08 21:38:05,157 DEBUG    [server] function "send_response" called from "<module>", params = ({'action': 'msg', 'time': 1594233485, 'to': '#test', 'from': 'test', 'message': 'Привет!'}, <socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>), {}
+2020-07-08 21:38:05,158 DEBUG    [server] function "process_action" called from "send_response", params = ({'action': 'msg', 'time': 1594233485, 'to': '#test', 'from': 'test', 'message': 'Привет!'},), {}
+2020-07-08 21:38:05,158 DEBUG    [server] function "form_response" called from "send_response", params = (410,), {}
+2020-07-08 21:38:05,158 DEBUG    [server] Formed response: {'response': 410, 'time': 1594233485, 'error': 'Target user is offline'}
+2020-07-08 21:38:05,159 DEBUG    [server] function "send_message" called from "send_response", params = ({'response': 410, 'time': 1594233485, 'error': 'Target user is offline'}, <socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:05,159 INFO     [server] -> Sent message to ('127.0.0.1', 4325): {'response': 410, 'time': 1594233485, 'error': 'Target user is offline'}
+2020-07-08 21:38:05,160 DEBUG    [server] function "receive_message" called from "<module>", params = (<socket.socket fd=640, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 4325)>, <Logger server (DEBUG)>), {}
+2020-07-08 21:38:05,160 ERROR    [server] Could not decode message: ""
+2020-07-08 21:38:05,160 ERROR    [server] function "receive_message" raised an exception "JSONDecodeError" ('Expecting value: line 1 column 1 (char 0)',)
+2020-07-08 21:38:05,160 INFO     [server] Client "test" has disconnected
