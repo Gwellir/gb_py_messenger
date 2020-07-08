@@ -3,6 +3,9 @@ from enum import Enum
 SERVER_ADDRESS = 'localhost'
 SERVER_PORT = 7777
 ENCODING = 'utf-8'
+MAX_DATA_LENGTH = 1024
+MIN_PORT_NUMBER = 1024
+MAX_PORT_NUMBER = 65535
 
 
 class Status:
@@ -33,12 +36,33 @@ CODE_MESSAGES = {
 }
 
 
-class JIMField:
+class JIMFields:
     TIME = 'time'
     RESPONSE = 'response'
     ERROR = 'error'
     ALERT = 'alert'
     ACTION = 'action'
+    USER = 'user'
+    TYPE = 'type'
+    TO = 'to'
+    FROM = 'from'
+    MESSAGE = 'message'
+    ROOM = 'room'
+
+    class ActionData:
+        PRESENCE = 'presence'
+        AUTH = 'authenticate'
+        JOIN = 'join'
+        MESSAGE = 'msg'
+        PROBE = 'probe'
+
+    class UserData:
+        ACCOUNT_NAME = 'account_name'
+        STATUS = 'status'
+        PASSWORD = 'password'
+
+    class TypeData:
+        STATUS = 'status'
 
 
 class Client:
