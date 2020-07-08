@@ -1,4 +1,3 @@
-import json
 import sys
 from datetime import datetime
 from socket import SOCK_STREAM, socket
@@ -6,15 +5,17 @@ from socket import SOCK_STREAM, socket
 from messenger.common.constants import (Client, MIN_PORT_NUMBER, MAX_PORT_NUMBER, JIMFields)
 from messenger.common.exceptions import NoAddressGivenError, PortOutOfRangeError
 from messenger.common.utils import parse_cli_flags, send_message, receive_message
+from messenger.log.client_log_config import CLIENT_LOG
 
 
 def check_settings(args):
     settings = parse_cli_flags(args)
     if not settings.address:
-        print('Address should be the first argument.')
+        CLIENT_LOG.error('Address should be the first argument.')
         raise NoAddressGivenError
     if settings.port < MIN_PORT_NUMBER or settings.port > MAX_PORT_NUMBER:
-        print(f'Please use port number between {MIN_PORT_NUMBER} and {MAX_PORT_NUMBER} (got {settings.port})')
+        CLIENT_LOG.error(f'Please use port number between {MIN_PORT_NUMBER} and {MAX_PORT_NUMBER} '
+                         f'(got {settings.port})')
         raise PortOutOfRangeError
 
     return settings.address, settings.port
@@ -30,6 +31,7 @@ def form_auth_message(acc_name, acc_password):
         }
     }
 
+    CLIENT_LOG.debug(f'Formed AUTH for user "{acc_name}"')
     return auth_obj
 
 
@@ -44,6 +46,7 @@ def form_presence_message(acc_name, status_message):
         },
     }
 
+    CLIENT_LOG.debug(f'Formed PRESENCE for user "{acc_name}": "{status_message}"')
     return presence_obj
 
 
@@ -56,6 +59,7 @@ def form_text_message(from_user, destination, content):
         JIMFields.MESSAGE: content,
     }
 
+    CLIENT_LOG.debug(f'Formed MESSAGE from user "{from_user}" to "{destination}": "{content}"')
     return message_obj
 
 
@@ -68,6 +72,7 @@ def form_join_message(from_user, chat):
         JIMFields.ROOM: chat,
     }
 
+    CLIENT_LOG.debug(f'Formed JOIN for user "{from_user}" to chat "{chat}"')
     return join_obj
 
 
@@ -82,36 +87,35 @@ def parse_message(message_obj):
         msg_time = datetime.fromtimestamp(message_obj[JIMFields.TIME])
         if JIMFields.RESPONSE in key_list:
             if JIMFields.ERROR in key_list:
-                print(f'<- {message_obj[JIMFields.ERROR]}')
+                CLIENT_LOG.error(f'Got ERROR from server: "{message_obj[JIMFields.ERROR]}"')
                 return f'Error: {message_obj[JIMFields.ERROR]}'
             elif JIMFields.ALERT in key_list:
-                print(f'<- {message_obj[JIMFields.ALERT]}')
+                CLIENT_LOG.info(f'Got ALERT from server: "{message_obj[JIMFields.ALERT]}"')
                 return f'Alert: {message_obj[JIMFields.ALERT]}'
         elif JIMFields.ACTION in key_list:
             if message_obj[JIMFields.ACTION] == JIMFields.ActionData.PROBE:
-                print('Probe received.')
+                CLIENT_LOG.info(f'Got PROBE from server at {msg_time}"')
                 return f'Probe received at {msg_time}'
-                # send_message(presence, conn)
+                # send_message(presence, conn, CLIENT_LOG)
             elif message_obj[JIMFields.ACTION] == JIMFields.ActionData.MESSAGE:
-                print(message_obj[JIMFields.MESSAGE])
+                CLIENT_LOG.info(f'Got MESSAGE from server: "{message_obj[JIMFields.MESSAGE]}"')
                 return f'Message: {message_obj[JIMFields.MESSAGE]}'
 
 
 if __name__ == '__main__':
     address, port = check_settings(sys.argv[1:])
 
-    conn = socket(type=SOCK_STREAM)  # Создать сокет TCP
-    print(f'Attempting connection to {address}:{port}')
-    conn.connect((address, port))   # Соединиться с сервером
+    conn = socket(type=SOCK_STREAM)
+    CLIENT_LOG.info(f'CONNECTING to server: {address}:{port}')
+    conn.connect((address, port))
 
-    print(f'Forming presence message for user "{Client.ACC_NAME}": "{Client.ACC_STATUS}"')
     presence = form_presence_message(str(Client.ACC_NAME), str(Client.ACC_STATUS))
-    send_message(presence, conn)
-    parse_message(receive_message(conn))
-    send_message(form_auth_message(Client.ACC_NAME, Client.ACC_PASSWORD), conn)
-    parse_message(receive_message(conn))
-    send_message(form_join_message(Client.ACC_NAME, '#test'), conn)
-    parse_message(receive_message(conn))
-    send_message(form_text_message(Client.ACC_NAME, '#test', 'Привет!'), conn)
-    parse_message(receive_message(conn))
+    send_message(presence, conn, CLIENT_LOG)
+    parse_message(receive_message(conn, CLIENT_LOG))
+    send_message(form_auth_message(Client.ACC_NAME, Client.ACC_PASSWORD), conn, CLIENT_LOG)
+    parse_message(receive_message(conn, CLIENT_LOG))
+    send_message(form_join_message(Client.ACC_NAME, '#test'), conn, CLIENT_LOG)
+    parse_message(receive_message(conn, CLIENT_LOG))
+    send_message(form_text_message(Client.ACC_NAME, '#test', 'Привет!'), conn, CLIENT_LOG)
+    parse_message(receive_message(conn, CLIENT_LOG))
     conn.close()

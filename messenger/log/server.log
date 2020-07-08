@@ -1,0 +1,91 @@
+2020-07-02 15:40:18,620 INFO     [server] Listening on "":7777
+2020-07-02 15:40:20,283 INFO     [server] <- Received message from ('127.0.0.1', 9504): {'action': 'presence', 'time': 1593693620, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:20,283 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693620, 'alert': 'OK'}
+2020-07-02 15:40:20,283 INFO     [server] -> Sent message to ('127.0.0.1', 9504): {'response': 200, 'time': 1593693620, 'alert': 'OK'}
+2020-07-02 15:40:20,283 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9504)
+2020-07-02 15:40:20,284 INFO     [server] <- Received message from ('127.0.0.1', 9504): {'action': 'authenticate', 'time': 1593693620, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:20,284 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
+2020-07-02 15:40:20,284 INFO     [server] -> Sent message to ('127.0.0.1', 9504): {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
+2020-07-02 15:40:20,289 INFO     [server] <- Received message from ('127.0.0.1', 9504): {'action': 'join', 'time': 1593693620, 'room': '#test'}
+2020-07-02 15:40:20,289 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:20,289 INFO     [server] -> Sent message to ('127.0.0.1', 9504): {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:20,289 INFO     [server] <- Received message from ('127.0.0.1', 9504): {'action': 'msg', 'time': 1593693620, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:20,290 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
+2020-07-02 15:40:20,290 INFO     [server] -> Sent message to ('127.0.0.1', 9504): {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
+2020-07-02 15:40:20,290 ERROR    [server] Could not decode message: ""
+2020-07-02 15:40:20,290 INFO     [server] Client "test" has disconnected
+2020-07-02 15:40:20,939 INFO     [server] <- Received message from ('127.0.0.1', 9505): {'action': 'presence', 'time': 1593693620, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:20,939 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693620, 'alert': 'OK'}
+2020-07-02 15:40:20,939 INFO     [server] -> Sent message to ('127.0.0.1', 9505): {'response': 200, 'time': 1593693620, 'alert': 'OK'}
+2020-07-02 15:40:20,939 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9505)
+2020-07-02 15:40:20,940 INFO     [server] <- Received message from ('127.0.0.1', 9505): {'action': 'authenticate', 'time': 1593693620, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:20,940 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
+2020-07-02 15:40:20,940 INFO     [server] -> Sent message to ('127.0.0.1', 9505): {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
+2020-07-02 15:40:20,940 INFO     [server] <- Received message from ('127.0.0.1', 9505): {'action': 'join', 'time': 1593693620, 'room': '#test'}
+2020-07-02 15:40:20,940 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:20,941 INFO     [server] -> Sent message to ('127.0.0.1', 9505): {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:20,941 INFO     [server] <- Received message from ('127.0.0.1', 9505): {'action': 'msg', 'time': 1593693620, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:20,941 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
+2020-07-02 15:40:20,941 INFO     [server] -> Sent message to ('127.0.0.1', 9505): {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
+2020-07-02 15:40:20,942 ERROR    [server] Could not decode message: ""
+2020-07-02 15:40:20,942 INFO     [server] Client "test" has disconnected
+2020-07-02 15:40:21,566 INFO     [server] <- Received message from ('127.0.0.1', 9506): {'action': 'presence', 'time': 1593693621, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:21,566 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693621, 'alert': 'OK'}
+2020-07-02 15:40:21,566 INFO     [server] -> Sent message to ('127.0.0.1', 9506): {'response': 200, 'time': 1593693621, 'alert': 'OK'}
+2020-07-02 15:40:21,567 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9506)
+2020-07-02 15:40:21,567 INFO     [server] <- Received message from ('127.0.0.1', 9506): {'action': 'authenticate', 'time': 1593693621, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:21,567 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693621, 'error': 'Wrong password'}
+2020-07-02 15:40:21,567 INFO     [server] -> Sent message to ('127.0.0.1', 9506): {'response': 402, 'time': 1593693621, 'error': 'Wrong password'}
+2020-07-02 15:40:21,567 INFO     [server] <- Received message from ('127.0.0.1', 9506): {'action': 'join', 'time': 1593693621, 'room': '#test'}
+2020-07-02 15:40:21,568 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693621, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:21,568 INFO     [server] -> Sent message to ('127.0.0.1', 9506): {'response': 404, 'time': 1593693621, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:21,568 INFO     [server] <- Received message from ('127.0.0.1', 9506): {'action': 'msg', 'time': 1593693621, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:21,568 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693621, 'error': 'Target user is offline'}
+2020-07-02 15:40:21,568 INFO     [server] -> Sent message to ('127.0.0.1', 9506): {'response': 410, 'time': 1593693621, 'error': 'Target user is offline'}
+2020-07-02 15:40:21,568 ERROR    [server] Could not decode message: ""
+2020-07-02 15:40:21,569 INFO     [server] Client "test" has disconnected
+2020-07-02 15:40:22,252 INFO     [server] <- Received message from ('127.0.0.1', 9509): {'action': 'presence', 'time': 1593693622, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:22,253 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693622, 'alert': 'OK'}
+2020-07-02 15:40:22,253 INFO     [server] -> Sent message to ('127.0.0.1', 9509): {'response': 200, 'time': 1593693622, 'alert': 'OK'}
+2020-07-02 15:40:22,253 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9509)
+2020-07-02 15:40:22,253 INFO     [server] <- Received message from ('127.0.0.1', 9509): {'action': 'authenticate', 'time': 1593693622, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:22,253 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
+2020-07-02 15:40:22,253 INFO     [server] -> Sent message to ('127.0.0.1', 9509): {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
+2020-07-02 15:40:22,254 INFO     [server] <- Received message from ('127.0.0.1', 9509): {'action': 'join', 'time': 1593693622, 'room': '#test'}
+2020-07-02 15:40:22,254 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:22,254 INFO     [server] -> Sent message to ('127.0.0.1', 9509): {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:22,254 INFO     [server] <- Received message from ('127.0.0.1', 9509): {'action': 'msg', 'time': 1593693622, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:22,254 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
+2020-07-02 15:40:22,255 INFO     [server] -> Sent message to ('127.0.0.1', 9509): {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
+2020-07-02 15:40:22,255 ERROR    [server] Could not decode message: ""
+2020-07-02 15:40:22,255 INFO     [server] Client "test" has disconnected
+2020-07-02 15:40:22,945 INFO     [server] <- Received message from ('127.0.0.1', 9513): {'action': 'presence', 'time': 1593693622, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:22,945 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693622, 'alert': 'OK'}
+2020-07-02 15:40:22,945 INFO     [server] -> Sent message to ('127.0.0.1', 9513): {'response': 200, 'time': 1593693622, 'alert': 'OK'}
+2020-07-02 15:40:22,945 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9513)
+2020-07-02 15:40:22,946 INFO     [server] <- Received message from ('127.0.0.1', 9513): {'action': 'authenticate', 'time': 1593693622, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:22,946 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
+2020-07-02 15:40:22,946 INFO     [server] -> Sent message to ('127.0.0.1', 9513): {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
+2020-07-02 15:40:22,946 INFO     [server] <- Received message from ('127.0.0.1', 9513): {'action': 'join', 'time': 1593693622, 'room': '#test'}
+2020-07-02 15:40:22,946 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:22,946 INFO     [server] -> Sent message to ('127.0.0.1', 9513): {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:22,947 INFO     [server] <- Received message from ('127.0.0.1', 9513): {'action': 'msg', 'time': 1593693622, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:22,947 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
+2020-07-02 15:40:22,947 INFO     [server] -> Sent message to ('127.0.0.1', 9513): {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
+2020-07-02 15:40:22,947 ERROR    [server] Could not decode message: ""
+2020-07-02 15:40:22,947 INFO     [server] Client "test" has disconnected
+2020-07-02 15:40:23,597 INFO     [server] <- Received message from ('127.0.0.1', 9514): {'action': 'presence', 'time': 1593693623, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:23,597 DEBUG    [server] Formed response: {'response': 200, 'time': 1593693623, 'alert': 'OK'}
+2020-07-02 15:40:23,598 INFO     [server] -> Sent message to ('127.0.0.1', 9514): {'response': 200, 'time': 1593693623, 'alert': 'OK'}
+2020-07-02 15:40:23,598 INFO     [server] New CLIENT: "test" from ('127.0.0.1', 9514)
+2020-07-02 15:40:23,598 INFO     [server] <- Received message from ('127.0.0.1', 9514): {'action': 'authenticate', 'time': 1593693623, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:23,598 DEBUG    [server] Formed response: {'response': 402, 'time': 1593693623, 'error': 'Wrong password'}
+2020-07-02 15:40:23,598 INFO     [server] -> Sent message to ('127.0.0.1', 9514): {'response': 402, 'time': 1593693623, 'error': 'Wrong password'}
+2020-07-02 15:40:23,599 INFO     [server] <- Received message from ('127.0.0.1', 9514): {'action': 'join', 'time': 1593693623, 'room': '#test'}
+2020-07-02 15:40:23,599 DEBUG    [server] Formed response: {'response': 404, 'time': 1593693623, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:23,599 INFO     [server] -> Sent message to ('127.0.0.1', 9514): {'response': 404, 'time': 1593693623, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:23,599 INFO     [server] <- Received message from ('127.0.0.1', 9514): {'action': 'msg', 'time': 1593693623, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:23,599 DEBUG    [server] Formed response: {'response': 410, 'time': 1593693623, 'error': 'Target user is offline'}
+2020-07-02 15:40:23,600 INFO     [server] -> Sent message to ('127.0.0.1', 9514): {'response': 410, 'time': 1593693623, 'error': 'Target user is offline'}
+2020-07-02 15:40:23,600 ERROR    [server] Could not decode message: ""
+2020-07-02 15:40:23,600 INFO     [server] Client "test" has disconnected

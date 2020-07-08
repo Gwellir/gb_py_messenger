@@ -1,7 +1,7 @@
 import json
 from unittest import TestCase
 
-from messenger.tests.loopback import ConnLoopback
+from messenger.unit_tests.loopback import ConnLoopback
 from messenger.common.utils import parse_cli_flags, send_message, receive_message
 
 

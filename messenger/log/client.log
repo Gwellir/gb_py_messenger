@@ -1,0 +1,102 @@
+2020-07-02 15:40:20,277 INFO     [client] CONNECTING to server: localhost:7777
+2020-07-02 15:40:20,282 DEBUG    [client] Formed PRESENCE for user "test": "online"
+2020-07-02 15:40:20,283 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'presence', 'time': 1593693620, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:20,283 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 200, 'time': 1593693620, 'alert': 'OK'}
+2020-07-02 15:40:20,283 INFO     [client] Got ALERT from server: "OK"
+2020-07-02 15:40:20,284 DEBUG    [client] Formed AUTH for user "test"
+2020-07-02 15:40:20,284 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'authenticate', 'time': 1593693620, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:20,288 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
+2020-07-02 15:40:20,288 ERROR    [client] Got ERROR from server: "Wrong password"
+2020-07-02 15:40:20,289 DEBUG    [client] Formed JOIN for user "test" to chat "#test"
+2020-07-02 15:40:20,289 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'join', 'time': 1593693620, 'room': '#test'}
+2020-07-02 15:40:20,289 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:20,289 ERROR    [client] Got ERROR from server: "User or chat doesn`t exist"
+2020-07-02 15:40:20,289 DEBUG    [client] Formed MESSAGE from user "test" to "#test": "Привет!"
+2020-07-02 15:40:20,289 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'msg', 'time': 1593693620, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:20,290 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
+2020-07-02 15:40:20,290 ERROR    [client] Got ERROR from server: "Target user is offline"
+2020-07-02 15:40:20,933 INFO     [client] CONNECTING to server: localhost:7777
+2020-07-02 15:40:20,938 DEBUG    [client] Formed PRESENCE for user "test": "online"
+2020-07-02 15:40:20,939 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'presence', 'time': 1593693620, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:20,939 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 200, 'time': 1593693620, 'alert': 'OK'}
+2020-07-02 15:40:20,939 INFO     [client] Got ALERT from server: "OK"
+2020-07-02 15:40:20,939 DEBUG    [client] Formed AUTH for user "test"
+2020-07-02 15:40:20,940 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'authenticate', 'time': 1593693620, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:20,940 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 402, 'time': 1593693620, 'error': 'Wrong password'}
+2020-07-02 15:40:20,940 ERROR    [client] Got ERROR from server: "Wrong password"
+2020-07-02 15:40:20,940 DEBUG    [client] Formed JOIN for user "test" to chat "#test"
+2020-07-02 15:40:20,940 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'join', 'time': 1593693620, 'room': '#test'}
+2020-07-02 15:40:20,941 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 404, 'time': 1593693620, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:20,941 ERROR    [client] Got ERROR from server: "User or chat doesn`t exist"
+2020-07-02 15:40:20,941 DEBUG    [client] Formed MESSAGE from user "test" to "#test": "Привет!"
+2020-07-02 15:40:20,941 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'msg', 'time': 1593693620, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:20,941 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 410, 'time': 1593693620, 'error': 'Target user is offline'}
+2020-07-02 15:40:20,941 ERROR    [client] Got ERROR from server: "Target user is offline"
+2020-07-02 15:40:21,561 INFO     [client] CONNECTING to server: localhost:7777
+2020-07-02 15:40:21,566 DEBUG    [client] Formed PRESENCE for user "test": "online"
+2020-07-02 15:40:21,566 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'presence', 'time': 1593693621, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:21,567 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 200, 'time': 1593693621, 'alert': 'OK'}
+2020-07-02 15:40:21,567 INFO     [client] Got ALERT from server: "OK"
+2020-07-02 15:40:21,567 DEBUG    [client] Formed AUTH for user "test"
+2020-07-02 15:40:21,567 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'authenticate', 'time': 1593693621, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:21,567 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 402, 'time': 1593693621, 'error': 'Wrong password'}
+2020-07-02 15:40:21,567 ERROR    [client] Got ERROR from server: "Wrong password"
+2020-07-02 15:40:21,567 DEBUG    [client] Formed JOIN for user "test" to chat "#test"
+2020-07-02 15:40:21,567 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'join', 'time': 1593693621, 'room': '#test'}
+2020-07-02 15:40:21,568 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 404, 'time': 1593693621, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:21,568 ERROR    [client] Got ERROR from server: "User or chat doesn`t exist"
+2020-07-02 15:40:21,568 DEBUG    [client] Formed MESSAGE from user "test" to "#test": "Привет!"
+2020-07-02 15:40:21,568 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'msg', 'time': 1593693621, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:21,568 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 410, 'time': 1593693621, 'error': 'Target user is offline'}
+2020-07-02 15:40:21,568 ERROR    [client] Got ERROR from server: "Target user is offline"
+2020-07-02 15:40:22,247 INFO     [client] CONNECTING to server: localhost:7777
+2020-07-02 15:40:22,252 DEBUG    [client] Formed PRESENCE for user "test": "online"
+2020-07-02 15:40:22,252 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'presence', 'time': 1593693622, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:22,253 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 200, 'time': 1593693622, 'alert': 'OK'}
+2020-07-02 15:40:22,253 INFO     [client] Got ALERT from server: "OK"
+2020-07-02 15:40:22,253 DEBUG    [client] Formed AUTH for user "test"
+2020-07-02 15:40:22,253 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'authenticate', 'time': 1593693622, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:22,253 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
+2020-07-02 15:40:22,254 ERROR    [client] Got ERROR from server: "Wrong password"
+2020-07-02 15:40:22,254 DEBUG    [client] Formed JOIN for user "test" to chat "#test"
+2020-07-02 15:40:22,254 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'join', 'time': 1593693622, 'room': '#test'}
+2020-07-02 15:40:22,254 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:22,254 ERROR    [client] Got ERROR from server: "User or chat doesn`t exist"
+2020-07-02 15:40:22,254 DEBUG    [client] Formed MESSAGE from user "test" to "#test": "Привет!"
+2020-07-02 15:40:22,254 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'msg', 'time': 1593693622, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:22,255 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
+2020-07-02 15:40:22,255 ERROR    [client] Got ERROR from server: "Target user is offline"
+2020-07-02 15:40:22,940 INFO     [client] CONNECTING to server: localhost:7777
+2020-07-02 15:40:22,945 DEBUG    [client] Formed PRESENCE for user "test": "online"
+2020-07-02 15:40:22,945 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'presence', 'time': 1593693622, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:22,945 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 200, 'time': 1593693622, 'alert': 'OK'}
+2020-07-02 15:40:22,945 INFO     [client] Got ALERT from server: "OK"
+2020-07-02 15:40:22,946 DEBUG    [client] Formed AUTH for user "test"
+2020-07-02 15:40:22,946 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'authenticate', 'time': 1593693622, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:22,946 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 402, 'time': 1593693622, 'error': 'Wrong password'}
+2020-07-02 15:40:22,946 ERROR    [client] Got ERROR from server: "Wrong password"
+2020-07-02 15:40:22,946 DEBUG    [client] Formed JOIN for user "test" to chat "#test"
+2020-07-02 15:40:22,946 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'join', 'time': 1593693622, 'room': '#test'}
+2020-07-02 15:40:22,946 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 404, 'time': 1593693622, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:22,947 ERROR    [client] Got ERROR from server: "User or chat doesn`t exist"
+2020-07-02 15:40:22,947 DEBUG    [client] Formed MESSAGE from user "test" to "#test": "Привет!"
+2020-07-02 15:40:22,947 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'msg', 'time': 1593693622, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:22,947 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 410, 'time': 1593693622, 'error': 'Target user is offline'}
+2020-07-02 15:40:22,947 ERROR    [client] Got ERROR from server: "Target user is offline"
+2020-07-02 15:40:23,592 INFO     [client] CONNECTING to server: localhost:7777
+2020-07-02 15:40:23,597 DEBUG    [client] Formed PRESENCE for user "test": "online"
+2020-07-02 15:40:23,597 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'presence', 'time': 1593693623, 'type': 'status', 'user': {'account_name': 'test', 'status': 'online'}}
+2020-07-02 15:40:23,598 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 200, 'time': 1593693623, 'alert': 'OK'}
+2020-07-02 15:40:23,598 INFO     [client] Got ALERT from server: "OK"
+2020-07-02 15:40:23,598 DEBUG    [client] Formed AUTH for user "test"
+2020-07-02 15:40:23,598 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'authenticate', 'time': 1593693623, 'user': {'account_name': 'test', 'password': '12345678'}}
+2020-07-02 15:40:23,598 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 402, 'time': 1593693623, 'error': 'Wrong password'}
+2020-07-02 15:40:23,599 ERROR    [client] Got ERROR from server: "Wrong password"
+2020-07-02 15:40:23,599 DEBUG    [client] Formed JOIN for user "test" to chat "#test"
+2020-07-02 15:40:23,599 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'join', 'time': 1593693623, 'room': '#test'}
+2020-07-02 15:40:23,599 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 404, 'time': 1593693623, 'error': 'User or chat doesn`t exist'}
+2020-07-02 15:40:23,599 ERROR    [client] Got ERROR from server: "User or chat doesn`t exist"
+2020-07-02 15:40:23,599 DEBUG    [client] Formed MESSAGE from user "test" to "#test": "Привет!"
+2020-07-02 15:40:23,599 INFO     [client] -> Sent message to ('127.0.0.1', 7777): {'action': 'msg', 'time': 1593693623, 'to': '#test', 'from': 'test', 'message': 'Привет!'}
+2020-07-02 15:40:23,600 INFO     [client] <- Received message from ('127.0.0.1', 7777): {'response': 410, 'time': 1593693623, 'error': 'Target user is offline'}
+2020-07-02 15:40:23,600 ERROR    [client] Got ERROR from server: "Target user is offline"
