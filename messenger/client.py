@@ -1,5 +1,6 @@
 import sys
 from datetime import datetime
+from time import sleep
 from socket import SOCK_STREAM, socket
 
 from messenger.common.constants import (Client, MIN_PORT_NUMBER, MAX_PORT_NUMBER, JIMFields)
@@ -106,11 +107,15 @@ def parse_message(message_obj):
                 # send_message(presence, conn, CLIENT_LOG)
             elif message_obj[JIMFields.ACTION] == JIMFields.ActionData.MESSAGE:
                 CLIENT_LOG.info(f'Got MESSAGE from server: "{message_obj[JIMFields.MESSAGE]}"')
-                return f'Message: {message_obj[JIMFields.MESSAGE]}'
+                return f'{datetime.fromtimestamp(message_obj[JIMFields.TIME])} Message: {message_obj[JIMFields.MESSAGE]}'
 
 
 if __name__ == '__main__':
-    address, port = check_settings(sys.argv[1:])
+    # address, port = check_settings(sys.argv[1:])
+    address, port = 'localhost', 7777
+    is_listener = False
+    if len(sys.argv) > 1 and sys.argv[1] == 'listen':
+        is_listener = True
 
     conn = socket(type=SOCK_STREAM)
     CLIENT_LOG.info(f'CONNECTING to server: {address}:{port}')
@@ -119,10 +124,14 @@ if __name__ == '__main__':
     presence = form_presence_message(str(Client.ACC_NAME), str(Client.ACC_STATUS))
     send_message(presence, conn, CLIENT_LOG)
     parse_message(receive_message(conn, CLIENT_LOG))
-    send_message(form_auth_message(Client.ACC_NAME, Client.ACC_PASSWORD), conn, CLIENT_LOG)
-    parse_message(receive_message(conn, CLIENT_LOG))
-    send_message(form_join_message(Client.ACC_NAME, '#test'), conn, CLIENT_LOG)
-    parse_message(receive_message(conn, CLIENT_LOG))
-    send_message(form_text_message(Client.ACC_NAME, '#test', 'Привет!'), conn, CLIENT_LOG)
-    parse_message(receive_message(conn, CLIENT_LOG))
+    # send_message(form_auth_message(Client.ACC_NAME, Client.ACC_PASSWORD), conn, CLIENT_LOG)
+    # parse_message(receive_message(conn, CLIENT_LOG))
+    # send_message(form_join_message(Client.ACC_NAME, '#test'), conn, CLIENT_LOG)
+    # parse_message(receive_message(conn, CLIENT_LOG))
+    while True:
+        if not is_listener:
+            send_message(form_text_message(Client.ACC_NAME, '#test', 'test'), conn, CLIENT_LOG)
+            sleep(1)
+        else:
+            print(parse_message(receive_message(conn, CLIENT_LOG)))
     conn.close()
