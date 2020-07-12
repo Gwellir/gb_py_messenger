@@ -1,8 +1,10 @@
 import argparse
 import json
 from messenger.common.constants import SERVER_PORT, ENCODING, MAX_DATA_LENGTH
+from messenger.common.decorators import Log
 
 
+@Log()
 def parse_cli_flags(args_list):
     parser = argparse.ArgumentParser()
     parser.add_argument('address', nargs='?', type=str)
@@ -11,6 +13,7 @@ def parse_cli_flags(args_list):
     return parser.parse_args(args_list)
 
 
+@Log()
 def send_message(message_obj, connection, logger):
     message_str = json.dumps(message_obj, ensure_ascii=False)
     connection.send(message_str.encode(ENCODING))
@@ -18,14 +21,16 @@ def send_message(message_obj, connection, logger):
                 f'{message_obj}')
 
 
+@Log(raiseable=True)
 def receive_message(connection, logger):
     data = connection.recv(MAX_DATA_LENGTH)
     message_str = data.decode(ENCODING)
     try:
         message_obj = json.loads(message_str)
-    except json.JSONDecodeError:
+    except json.JSONDecodeError as e:
         logger.error(f'Could not decode message: "{message_str}"')
-        return None
+        raise e
+        # return None
 
     logger.info(f'<- Received message from {connection.getpeername()}: {message_obj}')
     return message_obj

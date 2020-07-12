@@ -3,10 +3,12 @@ from json import JSONDecodeError
 from socket import SOCK_STREAM, socket
 from datetime import datetime
 
-from messenger.common.constants import (ServerCodes, SERVER_PORT, CODE_MESSAGES, JIMFields, MIN_PORT_NUMBER, MAX_PORT_NUMBER)
+from messenger.common.constants import (ServerCodes, SERVER_PORT, CODE_MESSAGES, JIMFields, MIN_PORT_NUMBER,
+                                        MAX_PORT_NUMBER)
 from messenger.common.utils import parse_cli_flags, send_message, receive_message
 from messenger.common.exceptions import PortOutOfRangeError
 from messenger.log.server_log_config import SERVER_LOG
+from messenger.common.decorators import Log
 
 
 class User:
@@ -23,6 +25,7 @@ class User:
                f'\nlast online: {self.last_online.strftime("%H:%M:%S")} with status "{self.status}"'
 
 
+@Log(raiseable=True)
 def check_settings(args):
     settings = parse_cli_flags(args)
     if not settings.address:
@@ -34,6 +37,7 @@ def check_settings(args):
     return settings.address, settings.port
 
 
+@Log()
 def form_response(code=ServerCodes.OK):
     response_obj = {
         JIMFields.RESPONSE: code,
@@ -49,6 +53,7 @@ def form_response(code=ServerCodes.OK):
     return response_obj
 
 
+@Log()
 def process_action(message_obj):
     if message_obj[JIMFields.ACTION] == JIMFields.ActionData.PRESENCE:
         code = ServerCodes.OK
@@ -64,6 +69,7 @@ def process_action(message_obj):
     return code
 
 
+@Log()
 def send_response(message_obj, client, code=ServerCodes.OK, user=None):
     key_list = message_obj.keys()
     if JIMFields.TIME in key_list:
@@ -73,6 +79,7 @@ def send_response(message_obj, client, code=ServerCodes.OK, user=None):
             send_message(form_response(code), client, SERVER_LOG)
 
 
+@Log(raiseable=True)
 def check_presence(presence_obj):
     if not presence_obj:
         return False
@@ -83,15 +90,17 @@ def check_presence(presence_obj):
                     and presence_obj[JIMFields.USER][JIMFields.UserData.ACCOUNT_NAME]\
                     and presence_obj[JIMFields.USER][JIMFields.UserData.STATUS]:
                 return True
-        except KeyError:
+        except KeyError as e:
             SERVER_LOG.error(f'Could not parse PRESENCE message: {presence_obj}')
-            return False
+            raise e
+            # return False
 
 
+@Log()
 def terminate_connection(client, code):
     send_message(form_response(code), client, SERVER_LOG)
     client.close()
-    SERVER_LOG.info(f'Client {client.getpeername()} disconnected: {CODE_MESSAGES[code]}')
+    # SERVER_LOG.info(f'Client {client.getpeername()} disconnected: {CODE_MESSAGES[code]}')
 
 
 if __name__ == '__main__':

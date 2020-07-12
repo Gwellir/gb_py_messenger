@@ -6,8 +6,10 @@ from messenger.common.constants import (Client, MIN_PORT_NUMBER, MAX_PORT_NUMBER
 from messenger.common.exceptions import NoAddressGivenError, PortOutOfRangeError
 from messenger.common.utils import parse_cli_flags, send_message, receive_message
 from messenger.log.client_log_config import CLIENT_LOG
+from messenger.common.decorators import Log
 
 
+@Log(raiseable=True)
 def check_settings(args):
     settings = parse_cli_flags(args)
     if not settings.address:
@@ -21,6 +23,7 @@ def check_settings(args):
     return settings.address, settings.port
 
 
+@Log()
 def form_auth_message(acc_name, acc_password):
     auth_obj = {
         JIMFields.ACTION: JIMFields.ActionData.AUTH,
@@ -35,6 +38,7 @@ def form_auth_message(acc_name, acc_password):
     return auth_obj
 
 
+@Log()
 def form_presence_message(acc_name, status_message):
     presence_obj = {
         JIMFields.ACTION: JIMFields.ActionData.PRESENCE,
@@ -50,6 +54,7 @@ def form_presence_message(acc_name, status_message):
     return presence_obj
 
 
+@Log()
 def form_text_message(from_user, destination, content):
     message_obj = {
         JIMFields.ACTION: JIMFields.ActionData.MESSAGE,
@@ -63,6 +68,7 @@ def form_text_message(from_user, destination, content):
     return message_obj
 
 
+@Log()
 def form_join_message(from_user, chat):
     if chat[0] != '#':
         return None
@@ -76,6 +82,7 @@ def form_join_message(from_user, chat):
     return join_obj
 
 
+@Log()
 def parse_message(message_obj):
     """
     Message content parser.
