@@ -10,9 +10,9 @@ while True:
     if user == 'q':
         break
     elif user == 's':
-        for _ in range(count):
+        for i in range(count):
             sleep(1/count)
-            p_list.append(Popen('python client.py', shell=True, creationflags=CREATE_NEW_CONSOLE))
+            p_list.append(Popen(f'python client.py sender {i + 1} ', creationflags=CREATE_NEW_CONSOLE))
         print(f'launched {count} clients')
     elif user == 'x':
         for p in p_list:

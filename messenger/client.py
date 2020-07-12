@@ -114,23 +114,24 @@ if __name__ == '__main__':
     # address, port = check_settings(sys.argv[1:])
     address, port = 'localhost', 7777
     is_listener = False
-    if len(sys.argv) > 1 and sys.argv[1] == 'listen':
-        is_listener = True
+    client_id = ''
+    if len(sys.argv) > 1:
+        if sys.argv[1] == 'listen':
+            is_listener = True
+        elif sys.argv[1] == 'sender' and len(sys.argv) > 2:
+            client_id = sys.argv[2]
 
     conn = socket(type=SOCK_STREAM)
     CLIENT_LOG.info(f'CONNECTING to server: {address}:{port}')
     conn.connect((address, port))
 
-    presence = form_presence_message(str(Client.ACC_NAME), str(Client.ACC_STATUS))
+    presence = form_presence_message(Client.ACC_NAME, Client.ACC_STATUS)
     send_message(presence, conn, CLIENT_LOG)
     parse_message(receive_message(conn, CLIENT_LOG))
-    # send_message(form_auth_message(Client.ACC_NAME, Client.ACC_PASSWORD), conn, CLIENT_LOG)
-    # parse_message(receive_message(conn, CLIENT_LOG))
-    # send_message(form_join_message(Client.ACC_NAME, '#test'), conn, CLIENT_LOG)
-    # parse_message(receive_message(conn, CLIENT_LOG))
+
     while True:
         if not is_listener:
-            send_message(form_text_message(Client.ACC_NAME, '#test', 'test'), conn, CLIENT_LOG)
+            send_message(form_text_message(Client.ACC_NAME, '#test', f'test {client_id}'), conn, CLIENT_LOG)
             sleep(1)
         else:
             print(parse_message(receive_message(conn, CLIENT_LOG)))
