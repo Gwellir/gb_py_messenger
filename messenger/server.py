@@ -1,10 +1,11 @@
+import select
 import sys
 from json import JSONDecodeError
 from socket import SOCK_STREAM, socket
 from datetime import datetime
 
 from messenger.common.constants import (ServerCodes, SERVER_PORT, CODE_MESSAGES, JIMFields, MIN_PORT_NUMBER,
-                                        MAX_PORT_NUMBER)
+                                        MAX_PORT_NUMBER, MAX_CLIENTS, TIMEOUT_INTERVAL)
 from messenger.common.utils import parse_cli_flags, send_message, receive_message
 from messenger.common.exceptions import PortOutOfRangeError
 from messenger.log.server_log_config import SERVER_LOG
@@ -103,43 +104,96 @@ def terminate_connection(client, code):
     # SERVER_LOG.info(f'Client {client.getpeername()} disconnected: {CODE_MESSAGES[code]}')
 
 
+def read_requests(r_clients, w_clients, all_clients):
+    responses = []  # socket: req
+
+    for sock in r_clients:
+        try:
+            data = receive_message(sock, SERVER_LOG)
+            try:
+                if data[JIMFields.ACTION] == JIMFields.ActionData.MESSAGE:
+                    print(data)
+                    responses.append(data)
+            except KeyError as ex:
+                pass
+        except:
+            print(f'client {sock.fileno()} {sock.getpeername()} disconnected')
+            SERVER_LOG.error(f'Connection with {sock.getpeername()} was reset')
+            all_clients.remove(sock)
+            w_clients.remove(sock)
+
+    return responses
+
+
+def write_responses(responses, w_clients, all_clients):
+    for sock in w_clients:
+        for data in responses:
+            try:
+                send_message(data, sock, SERVER_LOG)
+            except:
+                print(f'client {sock.fileno()} {sock.getpeername()} disconnected')
+                SERVER_LOG.error(f'Connection with {sock.getpeername()} was reset')
+                sock.close()
+                all_clients.remove(sock)
+
+
 if __name__ == '__main__':
     address, port = check_settings(sys.argv[1:])
-    conn = socket(type=SOCK_STREAM)
-    conn.bind((address, port))
-    conn.listen(1)
+    s = socket(type=SOCK_STREAM)
+    s.bind((address, port))
+    s.listen(MAX_CLIENTS)
+    s.settimeout(TIMEOUT_INTERVAL)
+    clients = []
+    users = []
     SERVER_LOG.info(f'Listening on "{address}":{port}')
     # print(f'Listening on "{address}":{port}')
 
     while True:
-        client, addr = conn.accept()
         try:
-            presence_obj = receive_message(client, SERVER_LOG)
-            if check_presence(presence_obj):
-                user = User(client, addr, presence_obj[JIMFields.USER][JIMFields.UserData.ACCOUNT_NAME],
-                            presence_obj[JIMFields.USER][JIMFields.UserData.STATUS],
-                            datetime.fromtimestamp(presence_obj[JIMFields.TIME]))
-                send_response(presence_obj, client)
-                SERVER_LOG.info(f'New CLIENT: "{user.username}" from {user.address}')
-                # print(f'Client connected: {user}')
-            else:
+            client, addr = s.accept()
+        except OSError as e:
+            pass
+        else:
+            # print(f'Got connection from {addr}')
+            try:
+                presence_obj = receive_message(client, SERVER_LOG)
+                if check_presence(presence_obj):
+                    user = User(client, addr, presence_obj[JIMFields.USER][JIMFields.UserData.ACCOUNT_NAME],
+                                presence_obj[JIMFields.USER][JIMFields.UserData.STATUS],
+                                datetime.fromtimestamp(presence_obj[JIMFields.TIME]))
+                    send_response(presence_obj, client)
+                    users.append(user)
+                    clients.append(client)
+                    SERVER_LOG.info(f'New CLIENT: "{user.username}" from {user.address}')
+                    print(f'Client connected: {user}')
+                else:
+                    terminate_connection(client, ServerCodes.JSON_ERROR)
+                    continue
+            except JSONDecodeError:
                 terminate_connection(client, ServerCodes.JSON_ERROR)
                 continue
-        except JSONDecodeError:
-            terminate_connection(client, ServerCodes.JSON_ERROR)
-            continue
-        except ConnectionResetError:
-            SERVER_LOG.error(f'Connection with {client.getpeername()} was reset')
-            continue
-        try:
-            while True:
-                message = receive_message(client, SERVER_LOG)
-                if not message:
-                    break
-                send_response(message, client)
-        except ConnectionResetError:
-            SERVER_LOG.error(f'Connection with {client.getpeername()} was reset')
-            continue
+            except ConnectionResetError:
+                SERVER_LOG.error(f'Connection with {client.getpeername()} was reset')
+                continue
+            # clients.append(client)
         finally:
-            SERVER_LOG.info(f'Client "{user.username}" has disconnected')
-            client.close()
+            wait = 0
+            r = []
+            w = []
+        try:
+            r, w, e = select.select(clients, clients, [], wait)
+        except:
+            pass
+
+        responses = read_requests(r, w, clients)
+        write_responses(responses, w, clients)
+
+        # while True:
+        #     message = receive_message(client, SERVER_LOG)
+        #     if not message:
+        #         break
+        #     send_response(message, client)
+        # except ConnectionResetError:
+        #     SERVER_LOG.error(f'Connection with {client.getpeername()} was reset')
+        #     continue
+
