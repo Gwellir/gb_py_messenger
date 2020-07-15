@@ -7,15 +7,16 @@ from messenger.common.decorators import Log
 @Log()
 def parse_cli_flags(args_list):
     parser = argparse.ArgumentParser()
-    parser.add_argument('address', nargs='?', type=str)
-    parser.add_argument('port', nargs='?', type=int, default=SERVER_PORT)
+    parser.add_argument('-a', '--address', help='Server address', nargs='?', type=str)
+    parser.add_argument('-p', '--port', help='Server port number', nargs='?', type=int, default=SERVER_PORT)
+    parser.add_argument('-u', '--user', help='Username to use', nargs='?', type=str, default='Guest')
 
     return parser.parse_args(args_list)
 
 
 @Log()
 def send_message(message_obj, connection, logger):
-    message_str = json.dumps(message_obj, ensure_ascii=False)
+    message_str = json.dumps(message_obj, ensure_ascii=False) + '\n'
     connection.send(message_str.encode(ENCODING))
     logger.info(f'-> Sent message to {connection.getpeername()}: '
                 f'{message_obj}')
