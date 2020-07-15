@@ -1,5 +1,6 @@
 import select
 import sys
+from collections import defaultdict
 from json import JSONDecodeError
 from socket import SOCK_STREAM, socket
 from datetime import datetime
@@ -104,8 +105,9 @@ def terminate_connection(client, code):
     # SERVER_LOG.info(f'Client {client.getpeername()} disconnected: {CODE_MESSAGES[code]}')
 
 
-def read_requests(r_clients, w_clients, all_clients):
-    responses = []  # socket: req
+def read_requests(r_clients, w_clients, all_users):
+    responses = defaultdict(list)  # socket: req
+    user_dict = {all_users[user].username: user for user in all_users}
 
     for sock in r_clients:
         try:
@@ -113,28 +115,34 @@ def read_requests(r_clients, w_clients, all_clients):
             try:
                 if data[JIMFields.ACTION] == JIMFields.ActionData.MESSAGE:
                     print(data)
-                    responses.append(data)
+                    if data[JIMFields.TO] in user_dict:
+                        responses[user_dict[data[JIMFields.TO]]].append(data)
+                    elif data[JIMFields.TO] == '#test':
+                        for user in user_dict:
+                            responses[user_dict[user]].append(data)
+                    else:
+                        responses[user_dict[data[JIMFields.FROM]]].append(form_response(ServerCodes.USER_OFFLINE))
             except KeyError as ex:
                 pass
         except:
             print(f'client {sock.fileno()} {sock.getpeername()} disconnected')
             SERVER_LOG.error(f'Connection with {sock.getpeername()} was reset')
-            all_clients.remove(sock)
+            all_users.pop(sock)
             w_clients.remove(sock)
 
     return responses
 
 
-def write_responses(responses, w_clients, all_clients):
+def write_responses(responses, w_clients, all_users):
     for sock in w_clients:
-        for data in responses:
+        for data in responses[sock]:
             try:
                 send_message(data, sock, SERVER_LOG)
             except:
                 print(f'client {sock.fileno()} {sock.getpeername()} disconnected')
                 SERVER_LOG.error(f'Connection with {sock.getpeername()} was reset')
                 sock.close()
-                all_clients.remove(sock)
+                all_users.pop(all_users[sock])
 
 
 if __name__ == '__main__':
@@ -144,7 +152,7 @@ if __name__ == '__main__':
     s.listen(MAX_CLIENTS)
     s.settimeout(TIMEOUT_INTERVAL)
     clients = []
-    users = []
+    users = {}
     SERVER_LOG.info(f'Listening on "{address}":{port}')
     # print(f'Listening on "{address}":{port}')
 
@@ -162,7 +170,7 @@ if __name__ == '__main__':
                                 presence_obj[JIMFields.USER][JIMFields.UserData.STATUS],
                                 datetime.fromtimestamp(presence_obj[JIMFields.TIME]))
                     send_response(presence_obj, client)
-                    users.append(user)
+                    users[client] = user
                     clients.append(client)
                     SERVER_LOG.info(f'New CLIENT: "{user.username}" from {user.address}')
                     print(f'Client connected: {user}')
@@ -185,8 +193,9 @@ if __name__ == '__main__':
         except:
             pass
 
-        responses = read_requests(r, w, clients)
-        write_responses(responses, w, clients)
+        responses = read_requests(r, w, users)
+        write_responses(responses, w, users)
+        clients = list(users.keys())
 
         # while True:
         #     message = receive_message(client, SERVER_LOG)
